@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/news")
 public class NewsProcessingController {
 
-    @Autowired
-    private NewsService newsService;
     private static final String newsAttribute = "news";
     private static final String addNewsAttribute = "addnews";
     private static final String addNewsStatus = "active";
@@ -29,6 +27,8 @@ public class NewsProcessingController {
     private static final String deleteMessage = "delete ok";
     private static final String newsMessageAttribute = "newsMessage";
     private static final String newsMessage = "News saved!";
+    @Autowired
+    private NewsService newsService;
 
     @RequestMapping("/addNewsForm")
     public String showAddNewsForm(@ModelAttribute(newsAttribute) News news, HttpServletRequest request) {
@@ -49,7 +49,7 @@ public class NewsProcessingController {
     }
 
     @RequestMapping("/editNews/{id}")
-    public String showEditNewsForm(@PathVariable("id") String id,  Model model) {
+    public String showEditNewsForm(@PathVariable("id") String id, Model model) {
         try {
             News news = newsService.findById(Integer.parseInt(id));
             model.addAttribute(newsAttribute, news);

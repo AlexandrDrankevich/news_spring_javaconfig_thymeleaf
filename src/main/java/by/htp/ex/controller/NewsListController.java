@@ -11,14 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
 @SessionAttributes({"newsCount", "pageNumber"})
 public class NewsListController {
-    @Autowired
-    private NewsService newsService;
     private static final String newsOnPageAttribute = "news";
     private static final String presentationTypeAttribute = "presentation";
     private static final String newsCountParam = "newsCount";
@@ -27,9 +24,11 @@ public class NewsListController {
     private static final String typeOfPresentation = "newsList";
     private static final String sessionNewsCounAttribute = "newsCount";
     private static final String sessionPageAttribute = "pageNumber";
+    @Autowired
+    private NewsService newsService;
 
     @RequestMapping("/newsList")
-    public String showNewsList( Model model,
+    public String showNewsList(Model model,
                                @RequestParam(value = newsCountParam, required = false) String newsCount,
                                @RequestParam(value = pageNumberParam, required = false) String page,
                                @SessionAttribute(value = sessionPageAttribute, required = false) String sessionPage,

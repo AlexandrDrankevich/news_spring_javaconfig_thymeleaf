@@ -25,11 +25,11 @@ public class DataValidation {
     }
 
     public static class Builder {
-        private Map<String, Boolean> validResults = new HashMap<>();
         private static final String loginCheckPattern = "\\w+([\\.-]?\\w+)*@[a-z]+.[a-z]{2,3}";
         private static final String passwordCheckPattern = "[A-Z a-z 0-9]+";
         private static final String nameSurnameCheckPattern = "[A-Z a-z]+";
         private static final String birthdayCheckPattern = "((19|20)\\d\\d)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])";
+        private Map<String, Boolean> validResults = new HashMap<>();
 
         public Builder checkLogin(String login) {
             validResults.put("login", Pattern.matches(loginCheckPattern, login));

@@ -30,15 +30,15 @@ public class UserInfo implements Serializable {
     private List<UserRole> userRole;
 
 
+    public UserInfo() {
+    }
+
     public List<UserRole> getUserRole() {
         return userRole;
     }
 
     public void setUserRole(List<UserRole> userRole) {
         this.userRole = userRole;
-    }
-
-    public UserInfo() {
     }
 
     public java.sql.Date getBirthday() {

@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org">
+      xmlns:sec="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/resources/styles/newsStyle.css}" />
-        <title th:text="#{local.loctitle.name.management}"></title>
-  </head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" th:href="@{/resources/styles/newsStyle.css}" type="text/css"/>
+    <title th:text="#{local.loctitle.name.management}"></title>
+</head>
 <body>
 <div class="page">
     <div class="header" th:insert="~{header :: #header}">
     </div>
     <div class="base-layout-wrapper">
         <div class="menu">
-           	<div sec:authorize ="hasRole('ROLE_ANONYMOUS')">
-           		<div th:text="#{local.loctitle.name.welcome}">
-           		</div>
-                  </div>
-                <br/>
-           <div sec:authorize ="hasRole('ROLE_USER')" th:insert="~{menu :: #menu}">
-          </div>
+            <div sec:authorize="hasRole('ROLE_ANONYMOUS')">
+                <div th:text="#{local.loctitle.name.welcome}">
+                </div>
+            </div>
+            <br/>
+            <div sec:authorize="hasRole('ROLE_USER')" th:insert="~{menu :: #menu}">
+            </div>
         </div>
 
         <div class="content">
-         <th:block th:unless="${reg eq 'active'}">
-     <div sec:authorize ="hasRole('ROLE_ANONYMOUS')"  th:insert="~{guestInfo :: #guestInfo}">
-            </div>
-                <div sec:authorize ="hasRole('ROLE_USER')" th:insert="~{body :: #body}">
-                 </div>
-           </th:block>
-             <th:block th:if="${reg eq 'active'}" >
-             <div th:insert="~{registration :: #registration}"></div>
-           </th:block>
-				<th:block th:if="${addnews eq 'active'}">
-					<div th:insert="~{addNews :: #addNews}"></div>
-				</th:block>
-			</div>
+            <th:block th:unless="${reg eq 'active'}">
+                <div sec:authorize="hasRole('ROLE_ANONYMOUS')" th:insert="~{guestInfo :: #guestInfo}">
+                </div>
+                <div sec:authorize="hasRole('ROLE_USER')" th:insert="~{body :: #body}">
+                </div>
+            </th:block>
+            <th:block th:if="${reg eq 'active'}">
+                <div th:insert="~{registration :: #registration}"></div>
+            </th:block>
+            <th:block th:if="${addnews eq 'active'}">
+                <div th:insert="~{addNews :: #addNews}"></div>
+            </th:block>
+        </div>
     </div>
     <div class="footer" th:insert="~{footer :: #footer}">
-      </div>
+    </div>
 </div>
 </body>
 </html>

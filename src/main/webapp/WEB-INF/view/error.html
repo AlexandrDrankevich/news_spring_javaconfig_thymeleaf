@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
-<meta charset="utf-8">
-<title>Error Page</title>
-<link rel="stylesheet" type="text/css" th:href="@{/resources/styles/newsStyle.css}" />
+    <meta charset="utf-8">
+    <title>Error Page</title>
+    <link rel="stylesheet" th:href="@{/resources/styles/newsStyle.css}" type="text/css"/>
 </head>
 <body>
-	<div align="center">
-		<h4>Oops! Sorry Error.</h4>
-		<a th:href="@{/logout}"> <input type="submit" class="btn"
-			value="" th:value="#{local.locbutton.name.back}"/>
-		</a>
-	</div>
+<div align="center">
+    <h4>Oops! Sorry Error.</h4>
+    <a th:href="@{/logout}"> <input class="btn" th:value="#{local.locbutton.name.back}"
+                                    type="submit" value=""/>
+    </a>
+</div>
 </body>
 </html>

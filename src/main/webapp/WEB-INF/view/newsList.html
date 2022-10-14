@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org">
+      xmlns:sec="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org">
 <body id="newsList">
-	<div class="body-title">
-		<a href="" th:text="#{local.loclink.name.news}"></a>
-		>> <span th:text="#{local.loclink.name.news_list}"></span>
-	</div>
-	<form th:action="@{/news/delete}" method="get">
-		<div class="single-news-wrapper" th:each="news: ${news}">
-			<div class="single-news-header-wrapper">
-				<div class="news-title" th:text="${news.title}"></div>
-				<div class="news-date" th:text="${news.newsDate}"></div>
+<div class="body-title">
+    <a href="" th:text="#{local.loclink.name.news}"></a>
+    >> <span th:text="#{local.loclink.name.news_list}"></span>
+</div>
+<form method="get" th:action="@{/news/delete}">
+    <div class="single-news-wrapper" th:each="news: ${news}">
+        <div class="single-news-header-wrapper">
+            <div class="news-title" th:text="${news.title}"></div>
+            <div class="news-date" th:text="${news.newsDate}"></div>
 
-				<div class="news-content" th:text="${news.briefNews}"></div>
-				<div class="news-link-to-wrapper">
-					<div class="link-position">
+            <div class="news-content" th:text="${news.briefNews}"></div>
+            <div class="news-link-to-wrapper">
+                <div class="link-position">
 						<span sec:authorize="hasRole('ROLE_ADMIN')">
 							<a th:href="@{news/editNews/{id}(id=${news.idNews})}"
-								th:text="#{local.loclink.name.edit}"></a>
+                               th:text="#{local.loclink.name.edit}"></a>
 						</span>
-						<a th:href="@{/viewNews/{id}(id=${news.idNews})}"
-							th:text="#{local.loclink.name.view}" /></a>
-						<span sec:authorize="hasRole('ROLE_ADMIN')">
-							<input type="checkbox" name="id" th:value="${news.idNews }" />
+                    <a th:href="@{/viewNews/{id}(id=${news.idNews})}"
+                       th:text="#{local.loclink.name.view}"/></a>
+                    <span sec:authorize="hasRole('ROLE_ADMIN')">
+							<input name="id" th:value="${news.idNews }" type="checkbox"/>
 						</span>
-					</div>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-		<div class="no-news">
-			<th:block th:if="${news eq null}">
-				<span th:text="#{local.loctitle.name.no_news}"></span>
-			</th:block>
-		</div>
-		<span sec:authorize="hasRole('ROLE_ADMIN')">
+    <div class="no-news">
+        <th:block th:if="${news eq null}">
+            <span th:text="#{local.loctitle.name.no_news}"></span>
+        </th:block>
+    </div>
+    <span sec:authorize="hasRole('ROLE_ADMIN')">
 			<th:block th:unless="${news eq null}">
 				<div align="right">
-					<input type="submit" th:attr="onclick='return confirm(\'' + #{local.clickDelete.text} + '\');'"
-					 value="" th:value="#{local.locbutton.name.delete}"/>
+					<input th:attr="onclick='return confirm(\'' + #{local.clickDelete.text} + '\');'" th:value="#{local.locbutton.name.delete}"
+                           type="submit" value=""/>
 				</div>
 			</th:block>
 		</span>
-	</form>
-	<br />
-	<div align="center">
-	<th:block th:if="${pageCount.size()>1}"  th:each="pageNumber: ${pageCount}">
-				<a th:href="@{/newsList(pageNumber=${pageNumber})}" th:text="${pageNumber}"></a>
-		</th:block>
-		</div>
+</form>
+<br/>
+<div align="center">
+    <th:block th:each="pageNumber: ${pageCount}" th:if="${pageCount.size()>1}">
+        <a th:href="@{/newsList(pageNumber=${pageNumber})}" th:text="${pageNumber}"></a>
+    </th:block>
+</div>
 <th:block th:if="${news.size()>4}">
-		<br />
-		<span th:text="#{local.loctitle.news_on_page}"> </span>
-		<a th:href="@{/newsList(pageNumber=1,newsCount=5)}">5</a>
-		<a th:href="@{/newsList(pageNumber=1,newsCount=10)}">10</a>
+    <br/>
+    <span th:text="#{local.loctitle.news_on_page}"> </span>
+    <a th:href="@{/newsList(pageNumber=1,newsCount=5)}">5</a>
+    <a th:href="@{/newsList(pageNumber=1,newsCount=10)}">10</a>
 </th:block>
 </body>
 </html>

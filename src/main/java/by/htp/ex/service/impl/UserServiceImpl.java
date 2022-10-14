@@ -13,11 +13,10 @@ import javax.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final String messageInvalideRegData = "invalid registration data";
+    private final DataValidation.Builder validBuilder = new DataValidation.Builder();
     @Autowired
     private IUserDAO userDAO;
-
-    private final DataValidation.Builder validBuilder = new DataValidation.Builder();
-    private static final String messageInvalideRegData = "invalid registration data";
 
     @Override
     @Transactional

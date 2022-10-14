@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ViewNewsController {
-    @Autowired
-    private NewsService newsService;
     private static final String newsAttribute = "news";
     private static final String typeOfPresentation = "viewNews";
     private static final String presentationTypeAttribute = "presentation";
+    @Autowired
+    private NewsService newsService;
 
     @RequestMapping("/viewNews/{id}")
     public String viewNews(@PathVariable("id") String id, HttpServletRequest request) {

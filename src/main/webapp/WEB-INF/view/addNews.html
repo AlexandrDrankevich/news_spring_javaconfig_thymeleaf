@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org">
-    
+      xmlns:th="http://www.thymeleaf.org"
+>
+
 <body id="addNews">
 <div class="body-title">
-<a th:href="@{/newsList}" th:text="#{local.loclink.name.news}"></a>
-		>> <span th:unless="${editView eq 'active'}" th:text="#{local.loclink.name.add_news}"></span>
-		<span th:if="${editView eq 'active'}" th:text="#{local.loclink.name.edit_news}"></span>
+    <a th:href="@{/newsList}" th:text="#{local.loclink.name.news}"></a>
+    >> <span th:text="#{local.loclink.name.add_news}" th:unless="${editView eq 'active'}"></span>
+    <span th:if="${editView eq 'active'}" th:text="#{local.loclink.name.edit_news}"></span>
 </div>
 <br/>
 <div align="center">
-<form th:action="@{/news/saveNews}" th:object="${news}" method="POST">
-        <input type="hidden" th:field="*{idNews}"/>
+    <form method="POST" th:action="@{/news/saveNews}" th:object="${news}">
+        <input th:field="*{idNews}" type="hidden"/>
         <div>
             <label for=title th:text="#{local.loclabel.name.title}"> </label>
 
-            <input type="text" th:field="*{title}" id="title" class="form-addnews" maxlength="100" required="required"/>
+            <input class="form-addnews" id="title" maxlength="100" required="required" th:field="*{title}" type="text"/>
         </div>
         <br/>
         <div>
             <label for=date th:text="#{local.loclabel.name.date}"></label>
-            <input type="date" th:field="*{newsDate}" id="date" class="form-addnews" min="2022-01-01" max="2030-01-01"
-                        required="required"/>
+            <input class="form-addnews" id="date" max="2030-01-01" min="2022-01-01" required="required"
+                   th:field="*{newsDate}"
+                   type="date"/>
         </div>
         <br/>
         <p class="formfield">
             <label for="brief" th:text="#{local.loclabel.name.brief}"></label>
-            <textarea th:field="*{briefNews}" id="brief" class="form-addnews" maxlength="500" required="required"></textarea>
+            <textarea class="form-addnews" id="brief" maxlength="500" required="required"
+                      th:field="*{briefNews}"></textarea>
         </p>
         <br/>
         <p class="formfield">
             <label for="content" th:text="#{local.loclabel.name.content}"></label>
-            <textarea th:field="*{content}" id="content" class="form-content" maxlength="2048" required="required"></textarea>
+            <textarea class="form-content" id="content" maxlength="2048" required="required"
+                      th:field="*{content}"></textarea>
         </p>
         <br/>
         <div class="first-view-button">
-            <input type="submit" value="" th:value="#{local.locbutton.name.save}"/>
+            <input th:value="#{local.locbutton.name.save}" type="submit" value=""/>
         </div>
     </form>
 
     <div class="second-view-button">
-        <a th:href="@{/newsList}"><input type="submit" value="" th:value="#{local.locbutton.name.cancel}"/></a>
+        <a th:href="@{/newsList}"><input th:value="#{local.locbutton.name.cancel}" type="submit" value=""/></a>
     </div>
 </div>
-</body >
+</body>
 </html>
 
 

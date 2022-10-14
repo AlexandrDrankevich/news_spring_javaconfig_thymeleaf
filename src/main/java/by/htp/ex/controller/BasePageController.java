@@ -13,9 +13,9 @@ import java.util.List;
 
 @Controller
 public class BasePageController {
+    private static final String newsOnPageAttribute = "news";
     @Autowired
     private NewsService newsService;
-    private static final String newsOnPageAttribute = "news";
 
     @RequestMapping("/base_page")
     public String goToBasePage(HttpServletRequest request, Model model) {
