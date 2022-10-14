@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org">
+    
+<div class="menu-wrapper" id="menu">
+	<div class="menu-title-wrapper">
+		<div class="menu-title" th:text="#{local.loclink.name.news}"></div>
+	</div>
+
+	<div class="list-menu-invisible-wrapper">
+		<div class="list-menu-wrapper">
+			<ul>
+				<li>
+				<a th:href="@{/newsList}" th:text="#{local.loclink.name.list}"> </a><br />
+				</li>
+
+					<li sec:authorize="hasRole('ROLE_ADMIN')">
+					<a th:href="@{/news/addNewsForm}" th:text="#{local.loclink.name.add}"></a> <br /></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div style="height: 25px;"></div>
+</div>
+</html>
+

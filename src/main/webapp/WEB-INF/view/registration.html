@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<body id="registration">
+<div class="body-title">
+<a th:href="@{/base_page}" th:text="#{local.loclink.name.news}"></a>
+ >> <span th:text="#{local.loclink.name.reg}"></span>
+</div>
+
+<div class="reg-form-body">
+    <form th:action="@{/registration/do_registration}" th:object="${newUserInfo}" method="POST">
+    
+        <div>
+            <label for="name"  th:text="#{local.loclabel.name.name}"></label>
+            <input type="text" th:field="*{name}" class="form-control" required="required" pattern="[A-Z a-z]+"/>
+        </div>
+        <br/>
+        <div>
+            <label for="surname" th:text="#{local.loclabel.name.surname}"></label>
+            <input type="text" th:field="*{surname}" class="form-control" required="required" pattern="[A-Z a-z]+"/>
+        </div>
+        <br/>
+        <div>
+            <label for="login">
+            <span th:text="#{local.loclabel.name.logMail}"></span>
+             <th:block th:unless="${messageLoginExist eq null}" >
+                    <font color="red"> <span th:text="${messageLoginExist}"></span>
+                   <span  th:text="#{local.loclabel.name.exist}"></span>
+                        </font>
+                 </th:block>
+            </label>
+            <input type="email" th:field="*{login}" class="form-control" required="required"/>
+        </div>
+        <br/>
+        <div>
+            <label for="birthday" th:text="#{local.loclabel.name.birthday}"></label>
+            <input type="date" th:field="*{birthday}" class="form-control" required="required"/>
+        </div>
+        <br/>
+        <div>
+            <label for="password"  th:text="#{local.loclabel.name.password}"></label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" required="required"
+                        pattern="[A-Z a-z 0-9]+"/>
+        </div>
+        <br/>
+        <div>
+            <input type="submit" class="btn" value="" th:value="#{local.loclink.name.reg}"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

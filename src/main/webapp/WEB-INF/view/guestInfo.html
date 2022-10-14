@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org">
+<body id="guestInfo">
+<div class="body-title" >
+	<a th:href="@{/base_page}" th:text="#{local.loclink.name.news}"> </a> >>
+	<span th:text="#{local.loclink.name.latest_news}"></span>
+</div>
+<div class="single-news-wrapper" th:each="news: ${news}">
+	<div class="single-news-header-wrapper">
+		<div class="news-title" th:text="${news.title}"></div>
+		<div class="news-date" th:text="${news.newsDate}"></div>
+		<div class="news-content" th:text="${news.briefNews}"></div>
+	</div>
+</div>
+<div class="no-news">
+	<th:block th:if="${news eq null}">
+		<span th:text="#{local.loctitle.name.no_news}"></span>
+	</th:block>
+</div>
+</body>
+</html>
+

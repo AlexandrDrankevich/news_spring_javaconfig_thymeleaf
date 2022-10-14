@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org">
+<body  id="header">
+<div class="wrapper">
+    <div class="newstitle" th:text="#{local.loctitle.name.management}"></div>
+
+    <div class="local-link">
+
+        <div align="right">
+            <a href="?languageVar=en" th:text="#{local.locbutton.name.en}"></a> &nbsp;&nbsp;
+            <a href="?languageVar=ru" th:text="#{local.locbutton.name.ru}"></a> <br/> <br/>
+        </div>
+
+            <div align="right"  sec:authorize ="hasRole('ROLE_ANONYMOUS')">
+                 <form th:action="@{/authenticateTheUser}"  method="post" >
+                  <span th:text="#{local.loclabel.name.login}"> </span>
+                    <input type="text" name="username"  value="" required pattern="[a-z 0-9]+@[a-z]+.[a-z]{2,3}"/><br/>
+                     <span th:text="#{local.loclabel.name.password_enter}"></span> 
+                    <input  type="password" name="password"  value="" required
+                        pattern="[A-Z a-z 0-9]+"/><br/>
+                    <th:block th:unless="${param.error eq null}" >
+                    <font color="red">
+                     <span th:text="#{local.loctitle.name.authentication_error}"> </span>
+                        </font>
+                    </th:block>
+                    <th:block th:unless="${param.regMessage eq null}" >
+                     <span th:text="#{local.loctitle.name.reg_success}"> </span>
+                   </th:block>
+                    <a th:href="@{/registration/showForm}" th:text="#{local.loclink.name.reg}"></a>
+                    <input type="submit" value="" th:value="#{local.locbutton.name.sign_in}"/><br/>
+               <input type="hidden"
+							  name="${_csrf.parameterName}"
+							  value="${_csrf.token}" />
+          </form>
+            </div>
+
+            <div align="right" sec:authorize ="hasRole('ROLE_USER')">
+            
+            	<form  th:action="@{/logout}" method="POST">
+			<input type="submit" value="" th:value="#{local.locbutton.name.sign_out}" />
+		</form>
+	                                             
+                 <br/> 
+                 <th:block th:unless="${param.newsMessage eq null}" >  
+                 <span th:text="#{local.loctitle.name.news_saved}"></span>                          
+                </th:block>
+                
+                 <th:block th:unless="${param.deleteMessage eq null}" >  
+                 <span th:text="#{local.loctitle.name.news_delete}"></span>                          
+                </th:block>
+            </div>
+    </div>
+</div>
+</body>
+</html>
+

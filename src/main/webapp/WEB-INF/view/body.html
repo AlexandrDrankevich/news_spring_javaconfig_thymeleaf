@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body id="body">
+	<th:block th:if="${presentation eq 'newsList' }">
+		<div th:insert="~{newsList :: #newsList}"></div>
+	</th:block>
+	<th:block th:if="${presentation eq 'viewNews'}">
+		<div th:insert="~{viewNews :: #viewNews}"></div>
+	</th:block>
+</body>
+</html>

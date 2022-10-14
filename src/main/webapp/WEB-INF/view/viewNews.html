@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org">
+   
+    <body id="viewNews">
+<div class="body-title">
+		<a th:href="@{/newsList}" th:text="#{local.loclink.name.news}"></a>
+		>> <span th:text="#{local.loclink.name.view_news}"></span>
+</div>
+
+<div class="add-table-margin">
+    <table class="news_text_format">
+        <tr>
+            <td class="space_around_title_text" th:text="#{local.loclabel.name.title}"></td>
+
+            <td class="space_around_view_text">
+                <div class="word-breaker" th:text="${news.title }">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="space_around_title_text" th:text="#{local.loclabel.name.date}"></td>
+
+            <td class="space_around_view_text">
+                <div class="word-breaker"  th:text="${news.newsDate}">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="space_around_title_text" th:text="#{local.loclabel.name.brief}"></td>
+            <td class="space_around_view_text">
+                <div class="word-breaker"   th:text="${news.briefNews}">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="space_around_title_text" th:text="#{local.loclabel.name.content}"></td>
+            <td class="space_around_view_text">
+                <div class="word-breaker" th:text="${news.content}">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <div class="first-view-button">
+        <a th:href="@{/news/editNews/{id}(id=${news.idNews})}"><input type="submit" value="" th:value="#{local.loclink.name.edit}"/></a>
+    </div>
+
+    <div class="second-view-button">
+        <a th:href="@{/news/delete(id=${news.idNews })}">
+        <input type="submit"  th:attr="onclick='return confirm(\'' + #{local.clickDelete.text} + '\');'"
+					 value="" th:value="#{local.locbutton.name.delete}"/></a>
+    </div>
+</div>
+  </body>
+  </html>
