@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 
 <body id="registration">
 <div class="body-title">
@@ -9,15 +9,16 @@
 
 <div class="reg-form-body">
     <form method="POST" th:action="@{/registration/do_registration}" th:object="${newUserInfo}">
-
         <div>
             <label for="name" th:text="#{local.loclabel.name.name}"></label>
-            <input class="form-control" pattern="[A-Z a-z]+" required="required" th:field="*{name}" type="text"/>
+            <input class="form-control" id="name" pattern="[A-Z a-z]+" required="required" th:field="*{name}"
+                   type="text"/>
         </div>
         <br/>
         <div>
             <label for="surname" th:text="#{local.loclabel.name.surname}"></label>
-            <input class="form-control" pattern="[A-Z a-z]+" required="required" th:field="*{surname}" type="text"/>
+            <input class="form-control" id="surname" pattern="[A-Z a-z]+" required="required" th:field="*{surname}"
+                   type="text"/>
         </div>
         <br/>
         <div>
@@ -29,17 +30,18 @@
                     </font>
                 </th:block>
             </label>
-            <input class="form-control" required="required" th:field="*{login}" type="email"/>
+            <input class="form-control" id="login" required="required" th:field="*{login}" type="email"/>
         </div>
         <br/>
         <div>
             <label for="birthday" th:text="#{local.loclabel.name.birthday}"></label>
-            <input class="form-control" required="required" th:field="*{birthday}" type="date"/>
+            <input class="form-control" id="birthday" required="required" th:field="*{birthday}" type="date"/>
         </div>
         <br/>
         <div>
             <label for="password" th:text="#{local.loclabel.name.password}"></label>
-            <input class="form-control" id="password" pattern="[A-Z a-z 0-9]+" required="required" th:field="*{password}"
+            <input class="form-control" id="password" pattern="[A-Z a-z 0-9]+" required="required"
+                   th:field="*{password}"
                    type="password"/>
         </div>
         <br/>
