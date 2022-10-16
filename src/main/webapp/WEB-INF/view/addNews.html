@@ -13,31 +13,41 @@
 <div align="center">
     <form method="POST" th:action="@{/news/saveNews}" th:object="${news}">
         <input th:field="*{idNews}" type="hidden"/>
-        <div>
-            <label for=title th:text="#{local.loclabel.name.title}"> </label>
-
-            <input class="form-addnews" id="title" maxlength="100" required="required" th:field="*{title}" type="text"/>
-        </div>
-        <br/>
-        <div>
-            <label for=date th:text="#{local.loclabel.name.date}"></label>
-            <input class="form-addnews" id="date" max="2030-01-01" min="2022-01-01" required="required"
+         <table>
+      <tr>
+        <td  th:text="#{local.loclabel.name.title}"></td>
+        <td><input id="title" maxlength="100" required="required" th:field="*{title}" type="text" class="form-addnews"/>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td  th:text="#{local.loclabel.name.date}"></td>
+        <td><input id="date" max="2030-01-01" min="2022-01-01" required="required"
                    th:field="*{newsDate}"
-                   type="date"/>
-        </div>
-        <br/>
-        <p class="formfield">
-            <label for="brief" th:text="#{local.loclabel.name.brief}"></label>
-            <textarea class="form-addnews" id="brief" maxlength="500" required="required"
-                      th:field="*{briefNews}"></textarea>
-        </p>
-        <br/>
-        <p class="formfield">
-            <label for="content" th:text="#{local.loclabel.name.content}"></label>
-            <textarea class="form-content" id="content" maxlength="2048" required="required"
-                      th:field="*{content}"></textarea>
-        </p>
-        <br/>
+                   type="date" class="form-addnews"/>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td  th:text="#{local.loclabel.name.brief}"></td>
+        <td><textarea  id="brief" maxlength="500" required="required"
+                      th:field="*{briefNews}" class="form-addnews"></textarea>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td  th:text="#{local.loclabel.name.content}"></td>
+        <td><textarea id="content" maxlength="2048" required="required"
+                      th:field="*{content}" class="form-content"></textarea>
+      </tr>
+  </table>
+               <br/>
         <div class="first-view-button">
             <input th:value="#{local.locbutton.name.save}" type="submit" value=""/>
         </div>

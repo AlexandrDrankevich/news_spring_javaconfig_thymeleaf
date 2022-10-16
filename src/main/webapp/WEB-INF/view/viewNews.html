@@ -44,7 +44,7 @@
 </div>
 <div sec:authorize="hasRole('ROLE_ADMIN')">
     <div class="first-view-button">
-        <a th:href="@{/news/editNews/{id}(id=${news.idNews})}"><input th:value="#{local.loclink.name.edit}"
+        <a th:href="@{/news/editNews/{id}(id=${news.idNews})}"><input th:value="#{local.locbutton.name.edit}"
                                                                       type="submit" value=""/></a>
     </div>
     <div class="second-view-button">

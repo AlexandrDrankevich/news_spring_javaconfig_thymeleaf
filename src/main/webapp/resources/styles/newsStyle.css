@@ -334,7 +334,7 @@ textarea:invalid {
 }
 
 .form-content {
-    width: 70%;
+    width: 400px;
     height: 200px;
     padding: 5px 10px;
     line-height: 35px;
@@ -343,7 +343,7 @@ textarea:invalid {
 }
 
 .form-addnews {
-    width: 70%;
+    width: 400px;
     padding: 5px 10px;
     line-height: 35px;
     border: 1px solid black;
