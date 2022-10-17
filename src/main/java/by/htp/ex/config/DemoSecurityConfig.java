@@ -32,10 +32,19 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
-		http.authorizeRequests().antMatchers("/", "/base_page", "/registration/**", "/resources/**").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/base_page")
-				.loginProcessingUrl("/authenticateTheUser").failureUrl("/base_page?error")
-				.defaultSuccessUrl("/newsList").permitAll().and().logout().logoutSuccessUrl("/").permitAll();
+		http.authorizeRequests().antMatchers("/", "/base_page", "/registration/**", "/resources/**")
+		.permitAll()
+		.anyRequest()
+		.authenticated()
+		.and().formLogin()
+		.loginPage("/base_page")
+		.loginProcessingUrl("/authenticateTheUser")
+		.failureUrl("/base_page?error")
+		.defaultSuccessUrl("/newsList")
+		.permitAll()
+		.and().logout()
+		.logoutSuccessUrl("/")
+		.permitAll();
 	}
 
 	public class EncodingFilter implements Filter {
