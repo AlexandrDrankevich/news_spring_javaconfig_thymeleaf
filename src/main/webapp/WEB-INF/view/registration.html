@@ -11,14 +11,16 @@
     <form method="POST" th:action="@{/registration/do_registration}" th:object="${newUserInfo}">
         <div>
             <label for="name" th:text="#{local.loclabel.name.name}"></label>
-            <input class="form-control" id="name" pattern="[A-Z a-z]+" required="required" th:field="*{name}"
+            <input class="form-control" id="name"  pattern="[A-Z a-z]+" required="required" th:field="*{name}"
                    type="text"/>
+                   <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
         </div>
         <br/>
         <div>
             <label for="surname" th:text="#{local.loclabel.name.surname}"></label>
             <input class="form-control" id="surname" pattern="[A-Z a-z]+" required="required" th:field="*{surname}"
                    type="text"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</div>
         </div>
         <br/>
         <div>
@@ -31,6 +33,7 @@
                 </th:block>
             </label>
             <input class="form-control" id="login" required="required" th:field="*{login}" type="email"/>
+            <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
         </div>
         <br/>
         <div>
@@ -40,9 +43,8 @@
         <br/>
         <div>
             <label for="password" th:text="#{local.loclabel.name.password}"></label>
-            <input class="form-control" id="password" pattern="[A-Z a-z 0-9]+" required="required"
-                   th:field="*{password}"
-                   type="password"/>
+            <input class="form-control" id="password" pattern="[A-Z a-z 1-9]+" required="required" th:field="*{password}"  type="password"/>
+                   <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
         </div>
         <br/>
         <div>
