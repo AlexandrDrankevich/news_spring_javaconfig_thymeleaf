@@ -22,7 +22,16 @@ public class UserRole implements Serializable {
     @Column(name = "authority")
     private String role;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private UserInfo userInfo;
+
     public UserRole() {
+    }
+
+    public UserRole(UserInfo userInfo) {
+        login=userInfo.getLogin();
+        this.userInfo=userInfo;
     }
 
     public int getId() {
@@ -47,6 +56,14 @@ public class UserRole implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     @Override

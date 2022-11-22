@@ -36,8 +36,7 @@ public class UserInfo implements Serializable {
 	@Column(name = "birthday")
 	private java.sql.Date birthday;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_user")
+	@OneToMany( mappedBy = "userInfo",cascade = CascadeType.ALL)
 	private List<UserRole> userRole;
 
 	public UserInfo() {
